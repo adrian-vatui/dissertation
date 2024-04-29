@@ -1,0 +1,43 @@
+<mat-card class="post-card" [class.mat-elevation-z2]="true">
+    <mat-card-header>
+        <mat-card-title>{{post.author.username}} says</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <p>
+            {{post.text}}
+        </p>
+
+        <p>
+            <img *ngFor="let image of images" src="{{image.url}}" alt="image attached to post" mat-card-md-image>
+        </p>
+
+        <button mat-raised-button color="warn">
+            <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-raised-button color="primary" (click)="loadComments()">
+            <mat-icon>comment</mat-icon>
+        </button>
+
+        <div [hidden]="!displayComments">
+            <ul>
+                <li *ngFor="let comment of comments">{{comment.author.username}} says {{comment.text}}</li>
+            </ul>
+
+            <form [formGroup]="newCommentForm" (ngSubmit)="createComment(post)">
+                <p>
+                    <mat-form-field>
+      <textarea matInput id="comment-text" type="text" formControlName="text"
+                placeholder="Leave a comment..."></textarea>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!newCommentForm.valid">Comment
+                    </button>
+                </p>
+            </form>
+        </div>
+    </mat-card-content>
+
+
+</mat-card>
