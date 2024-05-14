@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environment/environment';
 import { Post } from '../models/post.model';
-import { Comment } from '../models/comment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +14,10 @@ export class PostsService {
   }
 
   public getPosts(): Observable<any> {
-    return this.http.get(`${environment.apiPath}${PostsService.BASE_PATH}`);
+    return this.http.get(`${environment.apiPath.replace('5000', '5002')}${PostsService.BASE_PATH}`);
   }
 
   public createPost(post: Post): Observable<any> {
-    return this.http.post(`${environment.apiPath}${PostsService.BASE_PATH}`, post);
-  }
-
-  public createComment(postId: number, comment: Comment): Observable<any> {
-    return this.http.post(`${environment.apiPath}${PostsService.BASE_PATH}/${postId}/comments`, comment);
+    return this.http.post(`${environment.apiPath.replace('5000', '5002')}${PostsService.BASE_PATH}`, post);
   }
 }
