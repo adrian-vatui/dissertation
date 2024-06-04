@@ -19,6 +19,8 @@ import org.springframework.web.util.WebUtils;
 import java.security.Key;
 import java.util.Date;
 
+import static org.springframework.boot.web.server.Cookie.SameSite;
+
 @Slf4j
 @Component
 public class JwtUtils {
@@ -38,7 +40,8 @@ public class JwtUtils {
 
     public ResponseCookie generateJwtCookie(User userPrincipal) {
         String jwt = generateTokenFromUsername(userPrincipal.getUsername());
-        return ResponseCookie.from(jwtCookie, jwt).path("/api").maxAge(24 * 60 * 60).httpOnly(true).secure(false).build();
+        return ResponseCookie.from(jwtCookie, jwt).path("/api").maxAge(24 * 60 * 60).httpOnly(true).secure(false)
+                .sameSite(SameSite.NONE.attributeValue()).build();
     }
 
     public ResponseCookie getCleanJwtCookie() {
