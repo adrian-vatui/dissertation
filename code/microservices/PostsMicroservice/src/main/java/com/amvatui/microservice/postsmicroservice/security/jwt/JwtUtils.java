@@ -38,7 +38,8 @@ public class JwtUtils {
 
     public ResponseCookie generateJwtCookie(UserDetails userPrincipal) {
         String jwt = generateTokenFromUsername(userPrincipal.getUsername());
-        return ResponseCookie.from(jwtCookie, jwt).path("/api").maxAge(24 * 60 * 60).httpOnly(true).secure(false).build();
+        return ResponseCookie.from(jwtCookie, jwt).path("/api").maxAge(24 * 60 * 60).httpOnly(true).secure(false)
+                .sameSite(org.springframework.boot.web.server.Cookie.SameSite.NONE.attributeValue()).build();
     }
 
     public ResponseCookie getCleanJwtCookie() {
