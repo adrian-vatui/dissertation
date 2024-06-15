@@ -1,0 +1,5 @@
+Label,# Samples,Average,Median,90% Line,95% Line,99% Line,Min,Max,Error %,Throughput,Received KB/sec,Sent KB/sec
+Failed Login sampler,460,696,607,1144,1411,1969,321,3759,0.000%,.62792,115.11,0.00
+Existing User - Comment and Post sampler,600,3911,3705,5626,6392,9188,1735,12593,0.000%,1.04864,452.49,0.00
+New User - Comment and Post sampler,600,5337,5397,7721,8281,10225,2053,17780,0.000%,.91160,394.09,0.00
+TOTAL,1660,3536,3345,6892,7637,9497,321,17780,0.000%,2.26597,822.58,0.00
