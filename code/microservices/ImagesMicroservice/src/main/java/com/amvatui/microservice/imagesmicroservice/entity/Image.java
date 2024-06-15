@@ -18,7 +18,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 @Entity
 public class Image extends BaseEntity {
-    @Column(length = 1024)
+    @Column(length = 2048)
     private String url;
 
     @JsonIgnore

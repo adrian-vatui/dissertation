@@ -6,6 +6,8 @@ import com.amvatui.microservice.postsmicroservice.mapper.PostMapper;
 import com.amvatui.microservice.postsmicroservice.repository.PostRepository;
 import com.amvatui.microservice.postsmicroservice.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -30,7 +32,10 @@ public class PostController {
 
     @GetMapping
     public ResponseEntity<List<PostDto>> getAll() {
-        return ResponseEntity.ok(postRepository.findAllByOrderByCreatedAtDesc().stream()
+        final PageRequest pageRequest = PageRequest.of(0, 50,
+                Sort.by("createdAt").descending());
+
+        return ResponseEntity.ok(postRepository.findAll(pageRequest).stream()
                 .map(PostMapper.INSTANCE::toDto)
                 .toList());
     }

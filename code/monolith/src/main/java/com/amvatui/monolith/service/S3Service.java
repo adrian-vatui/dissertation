@@ -18,7 +18,7 @@ import java.util.UUID;
 @Slf4j
 @Service
 public class S3Service {
-    private static final String BUCKET_NAME = "social-media-app-monolith";
+    private static final String BUCKET_NAME = "social-media-app-monolith-single";
     private final AmazonS3 s3 = AmazonS3ClientBuilder.standard()
             .withRegion(Regions.EU_WEST_1)
             .build();
@@ -41,6 +41,7 @@ public class S3Service {
 
         URL url = s3.generatePresignedUrl(BUCKET_NAME, key, DateUtils.addDays(new Date(), 7));
 
+        log.info("Image uploaded to {}", url);
         return url.toString();
     }
 }
