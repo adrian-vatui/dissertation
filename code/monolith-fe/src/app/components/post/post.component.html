@@ -15,7 +15,7 @@
         <button mat-raised-button color="warn">
             <mat-icon>favorite</mat-icon>
         </button>
-        <button mat-raised-button color="primary" (click)="loadComments()">
+        <button mat-raised-button color="primary" (click)="loadComments()" class="comment-button">
             <mat-icon>comment</mat-icon>
         </button>
 
@@ -27,12 +27,13 @@
             <form [formGroup]="newCommentForm" (ngSubmit)="createComment(post)">
                 <p>
                     <mat-form-field>
-      <textarea matInput id="comment-text" type="text" formControlName="text"
+      <textarea matInput class="input-comment" type="text" formControlName="text"
                 placeholder="Leave a comment..."></textarea>
                     </mat-form-field>
                 </p>
                 <p>
-                    <button mat-raised-button color="primary" type="submit" [disabled]="!newCommentForm.valid">Comment
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!newCommentForm.valid"
+                    class="submit-comment-button">Comment
                     </button>
                 </p>
             </form>

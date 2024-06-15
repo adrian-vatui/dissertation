@@ -14,10 +14,10 @@ export class PostsService {
   }
 
   public getPosts(): Observable<any> {
-    return this.http.get(`${environment.apiPath.replace('5000', '5002')}${PostsService.BASE_PATH}`);
+    return this.http.get(`${environment.apiPath}${PostsService.BASE_PATH}`);
   }
 
   public createPost(post: Post): Observable<any> {
-    return this.http.post(`${environment.apiPath.replace('5000', '5002')}${PostsService.BASE_PATH}`, post);
+    return this.http.post(`${environment.apiPath}${PostsService.BASE_PATH}`, post);
   }
 }

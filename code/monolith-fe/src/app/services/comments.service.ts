@@ -15,10 +15,10 @@ export class CommentsService {
   }
 
   public getComments(postId: number): Observable<any> {
-    return this.http.get(`${environment.apiPath.replace('5000', '5004')}${PostsService.BASE_PATH}/${postId}${CommentsService.BASE_PATH}`)
+    return this.http.get(`${environment.apiPath}${PostsService.BASE_PATH}/${postId}${CommentsService.BASE_PATH}`)
   }
 
   public createComment(postId: number, comment: Comment): Observable<any> {
-    return this.http.post(`${environment.apiPath.replace('5000', '5004')}${PostsService.BASE_PATH}/${postId}${CommentsService.BASE_PATH}`, comment);
+    return this.http.post(`${environment.apiPath}${PostsService.BASE_PATH}/${postId}${CommentsService.BASE_PATH}`, comment);
   }
 }

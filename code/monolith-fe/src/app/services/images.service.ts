@@ -17,12 +17,12 @@ export class ImagesService {
     const formData = new FormData();
     formData.append("file", file);
     return this.http.post(
-      `${environment.apiPath.replace('5000', '5006')}${PostsService.BASE_PATH}/${postId}${ImagesService.BASE_PATH}`,
+      `${environment.apiPath}${PostsService.BASE_PATH}/${postId}${ImagesService.BASE_PATH}`,
       formData);
   }
 
   public getImages(postId: number): Observable<any> {
     return this.http.get(
-      `${environment.apiPath.replace('5000', '5006')}${PostsService.BASE_PATH}/${postId}${ImagesService.BASE_PATH}`);
+      `${environment.apiPath}${PostsService.BASE_PATH}/${postId}${ImagesService.BASE_PATH}`);
   }
 }
